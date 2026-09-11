@@ -4,3 +4,32 @@
 @media(max-width:1000px){.wrap{padding-left:32px;padding-right:32px}.nav{padding:0 32px;height:85px}.hero{padding-top:42px}h1{font-size:8.1vw}.hero-actions{gap:18px}.hero-bottom{align-items:start}.hero-bottom p{font-size:19px}.hero-actions{flex-direction:column;align-items:start}.about-main,.career{gap:45px}.featured{gap:30px}.project{padding:28px}.section{padding-top:80px;padding-bottom:80px}.skill-list>div{grid-template-columns:30px 1fr 1.3fr}.skill-list h3{font-size:20px}}
 @media(max-width:680px){html{scroll-padding-top:25px}.wrap{padding-left:22px;padding-right:22px}.nav{padding:0 22px;height:80px;gap:15px}.nav nav{gap:20px}.nav nav a{font-size:13px}.nav nav a:first-child{display:none}.nav-contact{font-size:13px}.brand{font-size:34px}.brand span{font-size:10px}.hero{padding-top:35px}.hero-top{font-size:10px;letter-spacing:.5px;flex-wrap:wrap;gap:9px;margin-bottom:29px}.hero-top span:last-child{font-size:10px}h1{font-size:8.2vw}h1>span{font-size:2.1em}h1 i{right:8%;font-size:1.6em;bottom:.23em}.hero-bottom{flex-direction:column;margin-top:30px;gap:25px}.hero-bottom p{font-size:20px}.hero-actions{flex-direction:row;align-items:center;gap:20px}.button{font-size:14px;padding:13px 18px;gap:23px}.text-link{font-size:13px}.hero-foot{margin-top:43px;font-size:9px;letter-spacing:.4px}.hero-foot>span:last-child{font-size:11px}.section{padding-top:65px;padding-bottom:65px}.section-label{margin-bottom:26px;font-size:11px}h2{font-size:35px;letter-spacing:-1px}.about-main{grid-template-columns:1fr;gap:25px}.about-copy p{font-size:16px;line-height:1.9}.facts{gap:16px;margin-top:25px;padding-top:24px}.facts strong{font-size:33px;letter-spacing:-1.5px}.facts p{font-size:12px;line-height:1.6}.section-title{display:block;margin-bottom:30px}.section-title p{margin-top:20px;font-size:15px}.featured{grid-template-columns:1fr;gap:30px}.project{padding:24px 20px}.project h3{font-size:34px}.project-index{font-size:11px;letter-spacing:0;margin-bottom:24px}.project-index span{font-size:10px}.project .project-subtitle{font-size:17px}.project p{font-size:16px}.project-grid{grid-template-columns:1fr;gap:18px;margin-top:18px}.compact .project-mark{font-size:56px;margin:23px 0}.workflow{padding:22px 17px}.career{grid-template-columns:1fr;gap:30px}.career-content h3{font-size:23px}.education h3{font-size:20px}.skill-list{margin-top:38px}.skill-list>div{grid-template-columns:24px 1fr;gap:4px 12px;padding:20px 0}.skill-list h3{font-size:21px}.skill-list p{grid-column:2;font-size:14px}.contact{padding:55px 0}.contact h2{font-size:51px;letter-spacing:-2px}.contact h2 span{right:0;font-size:1.3em}.contact-bottom{align-items:start;flex-direction:column;gap:24px;margin-top:30px}.contact-bottom a{font-size:22px}.contact-bottom a span{margin-left:8px}footer{height:auto;padding-top:27px;padding-bottom:27px;flex-wrap:wrap}footer>span{font-size:11px}footer>a:last-child{font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* Motion enhances the page without hiding content when scripts are unavailable. */
+.project { transition: box-shadow .3s ease; }
+.project summary span, .text-link span, .nav-contact span, .contact-bottom a span {
+  display: inline-block; transition: transform .25s ease;
+}
+.project summary:hover span { transform: rotate(90deg); }
+.project details[open] summary span { transform: rotate(45deg); }
+@media (hover: hover) and (pointer: fine) {
+  .project:hover { box-shadow: 0 16px 40px #14270d18; }
+  .text-link:hover span, .nav-contact:hover span, .contact-bottom a:hover span { transform: translate(3px,-3px); }
+  .skill-list > div { transition: background .25s ease; }
+  .skill-list > div:hover { background: #cefa6a08; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flow-animate .flow-item { animation: flow-highlight 2.4s ease 3; }
+  .flow-animate .flow-item:nth-of-type(4) { animation-delay: .35s; }
+  .flow-animate .flow-item:nth-of-type(6) { animation-delay: .7s; }
+  .flow-animate .connector { animation: connector-light 2.4s ease 3; }
+}
+@keyframes flow-highlight {
+  0%, 65%, 100% { box-shadow: 0 0 0 transparent; }
+  25% { box-shadow: 0 0 20px #cefa6a24; border-color: #cefa6a; }
+}
+@keyframes connector-light { 25% { border-color: #cefa6a; } }
+@media (prefers-reduced-motion: reduce) {
+  .project, .project summary span, .text-link span, .nav-contact span,
+  .contact-bottom a span, .skill-list > div { transition: none; }
+}
